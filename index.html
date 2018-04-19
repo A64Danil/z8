@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX City Filter</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="loader-wrap">
+    <p class="loader">Загрузка...</p>
+    <img src="img/loader.gif" class="img-fluid">
+    <img src="img/loader2.gif" class="img-fluid">
+    <img src="img/loader3.gif" class="img-fluid">
+</div>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+            <h1>AJAX City Filter</h1>
+                <p>ДЗ 6.2 - Создать страницу с текстовым полем для фильтрации городов</p>
+                <p class="done">Страница должна предварительно загрузить список городов из https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json и отсортировать в алфавитном порядке </p>
+                <p class="done">При вводе в текстовое поле, под ним должен появляться список тех городов, в названии которых, хотя бы частично, есть введенное значение. Регистр символов учитываться не должен, то есть "Moscow" и "moscow" - одинаковые названия.</p>
+
+                <p class="done">Во время загрузки городов, на странице должна быть надпись "Загрузка..."</p>
+                <p class="done">После окончания загрузки городов, надпись исчезает и появляется текстовое поле.</p>
+
+                <p class="done">Запрещено использовать сторонние библиотеки. Разрешено пользоваться только тем, что встроено в браузер</p>
+            </div>
+
+            <div class="col-12 cityList">
+                <h3>Список городов:</h3>
+                <ol class="content">
+
+                </ol>
+
+            </div>
+
+            <div class="col-12">
+                <img src="https://avatanplus.com/files/resources/original/575ef345a87821554ae6483a.jpg" class="img-fluid">
+                <img src="http://www.setwalls.ru/pic/201505/1280x800/setwalls.ru-80996.jpg" class="img-fluid">
+                <img src="https://get.wallhere.com/photo/galaxy-planet-space-nebula-circle-atmosphere-universe-computer-wallpaper-outer-space-astronomical-object-32340.jpg" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+<script src="my.js"></script>
+
+</body>
+</html>
