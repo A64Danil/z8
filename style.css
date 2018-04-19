@@ -38,7 +38,8 @@ p.done:after {
     border: 1px solid #ccc;
     border-radius: 2px;
     border-top: none;
-    top: 35px;}
+    top: 35px;
+    z-index: 1;}
 
 .cityList .input-group .hintsWrap .hint{     padding: 3px 0 4px 25px;  cursor: pointer; position: relative;   }
 .cityList .input-group .hintsWrap .hint:hover {background-color: #8cbdff  }
