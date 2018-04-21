@@ -52,7 +52,7 @@
 <script id="friendsTpl" type="text/x-handlebars-template">
         {{#each items}}
         <a href="https://vk.com/id{{id}}" target="_blank">
-            <li style="background-image: url({{photo_200}});">
+            <li style="background-image: url({{photo_200}});" class="singleFriend" data-bday="{{bdate}}">
                     <div class="frName">{{first_name}}</div>
                     <div class="frBdate">{{bdate}}</div>
             </li>

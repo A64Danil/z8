@@ -39,6 +39,7 @@ function callAPI(method, params, version) {
         });
     })
 }
+
 (async () => {
     console.log('ща');
     await auth();
@@ -46,8 +47,8 @@ function callAPI(method, params, version) {
         console.log('внутри промиса');
         console.log(data.response);
         listSorter(data.response.items);
-        listCreator(data.response); // передаём объект { count: 277, items: [...]}
-        // для правильной генерации списка, массив нужно сначала отсортировать и обернуть заново
+        listCreator(data.response);
+        seasonColor();
     })
     console.log('перед ме');
     console.log(me);
@@ -60,40 +61,36 @@ function listSorter(arr) {
     arr.sort(function(a,b){
         let newA;
         let newB;
-        let tempA;
-        let tempB;
-
         try {
-            newA = a.bdate.split('.')
-            newB = b.bdate.split('.')
-
-            if (newA[0].length == 1) {
-                newA[0] = "0" + newA[0];
-            }
-            if (newA[1].length == 1) {
-                newA[1] = "0" + newA[1];
-            }
-
-            if (newB[0].length == 1) {
-                newB[0] = "0" + newB[0];
-            }
-            if (newB[1].length == 1) {
-                newB[1] = "0" + newB[1];
-            }
-
-            tempA = newA[1] + '.' + newA[0]
-            tempB = newB[1] + '.' + newB[0]
+            newA = getBday(a.bdate);
+            newB = getBday(b.bdate);
+            //console.log(newA, newB);
         }
         catch(e) {
             console.error(e.message);
         }
-
-        var c = tempA;
-        var d = tempB;
-        //console.log(tempA, tempB);
+        var c = newA;
+        var d = newB;
         return c-d;
     });
     console.log(arr);
+}
+
+function getBday(date) {
+    //console.log(date);
+    let newDate = date.split('.')
+    
+    var now = new Date();
+    var start = new Date(now.getFullYear(), (newDate[1] - 1), newDate[0]);
+    var diff = start - now;
+    var oneDay = 1000 * 60 * 60 * 24;
+    var day = Math.floor(diff / oneDay);
+    if (day < 0) {
+        //console.log('Исправляем отрицательное ' + day);
+        day += 365;
+    }
+    //console.log('Количество дней до ДР: ' + day);
+    return day;
 }
 
 function listCreator(arr) {
@@ -103,7 +100,19 @@ function listCreator(arr) {
 }
 
 
+function seasonColor() {
+    console.log('внутри отрисовки сезонов');
+    let temp = document.querySelectorAll('.singleFriend');
 
+    temp.forEach(function(item, i, arr) {
+        let dataReal = item.dataset.bday.split('.');
+        let generatedClassName = 'mounth' + dataReal[1];
+        //console.log(dataReal);
+        item.setAttribute('class', generatedClassName);
+    });
+
+    //console.log(temp);
+}
 
 // auth()
 //     .then(() => {

@@ -121,7 +121,20 @@ p.done:after {
 
 
 .content.friends a {text-decoration: none;}
-.content.friends li {background-size: contain;}
+.content.friends li {background-size: contain; border: 3px solid #ccc;     margin: 0 5px 10px auto}
+
+.content.friends li.mounth1 {border-color: #2a44bb;}
+.content.friends li.mounth2 {border-color: #659fff;}
+.content.friends li.mounth3 {border-color: #f5ffcd;}
+.content.friends li.mounth4 {border-color: #fff689;}
+.content.friends li.mounth5 {border-color: #ffd158;}
+.content.friends li.mounth6 {border-color: #b6ffb6;}
+.content.friends li.mounth7 {border-color: #77ff6d;}
+.content.friends li.mounth8 {border-color: #51ff08;}
+.content.friends li.mounth9 {border-color: #ff3526;}
+.content.friends li.mounth10 {border-color: #ff7934;}
+.content.friends li.mounth11 {border-color: #ffbd83;}
+.content.friends li.mounth12 {border-color: #915cff;}
 
 .content.friends li > div:last-of-type {background-color: #ffffff9c; border-radius: 3px;}
 
