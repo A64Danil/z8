@@ -42,10 +42,12 @@ function callAPI(method, params, version) {
 (async () => {
     console.log('ща');
     await auth();
-    const me = callAPI('friends.get', { fields: 'photo_100,photo_200', v: '5.74'}, (data) => {
+    const me = callAPI('friends.get', { fields: 'photo_100,photo_200,bdate', v: '5.74'}, (data) => {
         console.log('внутри промиса');
-        //console.log(data.response);
-        listCreator(data.response);
+        console.log(data.response);
+        listSorter(data.response.items);
+        listCreator(data.response); // передаём объект { count: 277, items: [...]}
+        // для правильной генерации списка, массив нужно сначала отсортировать и обернуть заново
     })
     console.log('перед ме');
     console.log(me);
@@ -53,6 +55,31 @@ function callAPI(method, params, version) {
 })();
 
 
+function listSorter(arr) {
+    console.log('внутри сортировки');
+    arr.sort(function(a,b){
+        let newA;
+        let newB;
+        let tempA;
+        let tempB;
+
+        try {
+            newA = a.bdate.split('.')
+            tempA = newA[1] + '.' + newA[0]
+            newB = b.bdate.split('.')
+            tempB = newB[1] + '.' + newB[0]
+        }
+        catch(e) {
+            console.error(e.message);
+        }
+
+        var c = tempA;
+        var d = tempB;
+        //console.log(tempA, tempB);
+        return c-d;
+    });
+    console.log(arr);
+}
 
 function listCreator(arr) {
     console.log('внутри создания списка');

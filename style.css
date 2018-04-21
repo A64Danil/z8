@@ -123,6 +123,8 @@ p.done:after {
 .content.friends a {text-decoration: none;}
 .content.friends li {background-size: contain;}
 
+.content.friends li > div:last-of-type {background-color: #ffffff9c; border-radius: 3px;}
+
 .some {
     background-position: -70px 0px;
     background-position: -70px 0px;
