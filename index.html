@@ -52,14 +52,20 @@
     <h3>Список городов:</h3>
     <ol class="content">
         {{#each cityList}}
-        <li>{{name}}</li>
+            <li>
+                <div class="singleCity">{{name}}</div>
+                <div class="cityIco"></div>
+            </li>
         {{/each}}
     </ol>
 </script>
 
 <script id="cityItem-tpl" type="text/x-handlebars-template">
     {#each cityItemList}}
-    <li>{{name}}</li>
+        <li>
+            <div class="singleCity">{{name}}</div>
+            <div class="cityIco"></div>
+        </li>
     {{/each}}
 </script>
 

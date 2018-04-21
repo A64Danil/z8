@@ -4,6 +4,7 @@
 *.lock
 !yarn.lock
 *.log
+*.psd
 out/
 dist/
 node_modules/

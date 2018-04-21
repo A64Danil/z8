@@ -57,6 +57,70 @@ p.done:after {
 .cityList .input-group .form-control.city-input.closed ~ .hintsWrap {display:none;}
 .cityList .input-group .form-control.city-input:active ~ .hintsWrap {background-color: #ccc;}
 
+
+.content {
+    padding-left: 0;
+    list-style-type: none; /* Убираем исходные маркеры */
+    counter-reset: num; /* Задаём имя счетчика */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.content li {
+    width: 120px; height: 120px; border: 1px solid #ccc; border-radius: 5px;    margin: 0 auto 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    position: relative;
+}
+
+.content li:hover {
+    background-color: #ddd;
+    top: 1px;
+    left: 1px;
+}
+
+.content li::before {
+    content: counter(num); /* Выводим число */
+    counter-increment: num; /* Увеличиваем значение счётчика */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+.content li:hover::before {
+    background-color: #fff;
+
+}
+.content li .cityIco {
+    width: 70px;
+    height: 55px;
+    background-image: url(img/city-pack.png);
+    background-repeat: no-repeat;
+    margin-top: -5px;
+    background-position: calc(counter(num)*70px) calc(counter(num)*70px);
+}
+
+.content li > div {
+    position: relative;
+    z-index: 10;
+    font-size: 16px;
+    font-weight: bold;
+    color: #9022d2;
+}
+
+
+.some {
+    background-position: -70px 0px;
+    background-position: -70px 0px;
+    background-position: 0px -70px;
+}
+
 @media (max-width: 767px)  {
     .cityList .input-group .count-results {position: absolute;
         right: 20px;

@@ -106,6 +106,26 @@ function cityListCreate(value) {
     }
     console.log(newCityList);
     console.log('Список готов');
+
+    iconRadomizer();
+}
+
+
+
+function iconRadomizer() {
+    console.log('Твои города:');
+    var allCitys = document.querySelectorAll('.cityIco')
+
+    allCitys.forEach(function(item, i, arr) {
+        let right = 70 * Math.floor(getRandomArbitary(0, -7));
+        let top = 65 * Math.floor(getRandomArbitary(0, -5));
+        item.style.backgroundPosition = `${right}px ${top}px`;
+    });
+    //console.log(allCitys);
+}
+
+function getRandomArbitary(min, max) {
+    return Math.random() * (max - min) + min;
 }
 
 function tryAgain() {
@@ -166,9 +186,12 @@ function findPartial( arr, ell ) {
             console.log("Точное совпадение, " + arr[i])
         }
     }
-
-    finArr = cityItemRender(tepmArr);
+    var tempVal = {
+        cityList: tepmArr
+    };
+    finArr = cityItemRender(tempVal);
     content.innerHTML += finArr;
+    iconRadomizer();
     console.log(tepmArr);
     resCountWrap.textContent = "(найдено: " + resCount + " )";
 }
