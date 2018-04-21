@@ -65,8 +65,23 @@ function listSorter(arr) {
 
         try {
             newA = a.bdate.split('.')
-            tempA = newA[1] + '.' + newA[0]
             newB = b.bdate.split('.')
+
+            if (newA[0].length == 1) {
+                newA[0] = "0" + newA[0];
+            }
+            if (newA[1].length == 1) {
+                newA[1] = "0" + newA[1];
+            }
+
+            if (newB[0].length == 1) {
+                newB[0] = "0" + newB[0];
+            }
+            if (newB[1].length == 1) {
+                newB[1] = "0" + newB[1];
+            }
+
+            tempA = newA[1] + '.' + newA[0]
             tempB = newB[1] + '.' + newB[0]
         }
         catch(e) {
