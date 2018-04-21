@@ -11,13 +11,14 @@ var findCity = []; // Resulf of maching
 const textField =  document.createElement('input'); // City Input
 
 var textFieldHintsWrap =  document.createElement('div'); // Place for Hints
+var textFieldClear =  document.createElement('div'); // Clear value of text field
 
 var resCountWrap = document.createElement('div'); // Count results of search
 
 const cityTpl = document.querySelector('#city-tpl').textContent;
 const cityRender = Handlebars.compile(cityTpl);
 
-const cityItemTpl = document.querySelector('#city-tpl').textContent;
+const cityItemTpl = document.querySelector('#cityItem-tpl').textContent;
 const cityItemRender = Handlebars.compile(cityItemTpl);
 
 function loadTowns(url = 'https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json') {
@@ -71,20 +72,21 @@ function createTextField() {
 
 
     textField.setAttribute('type', 'text');
-    textField.setAttribute('class', 'form-control city-input');
+    textField.setAttribute('class', 'form-control city-input closed');
     textField.setAttribute('placeholder', 'Введите название города');
     textFieldWrap.appendChild(textField);
 
-    textFieldHintsWrap.setAttribute('class', 'hintsWrap');
+    textFieldClear.setAttribute('class', 'textFieldClear');
+    textFieldClear.textContent = 'отчистить'
     resCountWrap.setAttribute('class', 'count-results');
     textFieldWrap.appendChild(resCountWrap);
-    textFieldWrap.appendChild(textFieldHintsWrap);
+    textFieldWrap.appendChild(textFieldClear);
 
 
-    textFieldHintsWrap.addEventListener('click', function (e) {
-        //console.log(e.target.textContent);
-        textField.value = e.target.textContent;
+    textFieldClear.addEventListener('click', function (e) {
+        textField.value = '';
         resCountWrap.textContent = null;
+        findPartial(newCityList, textField.value);
     })
 
     textField.addEventListener('keyup', findOnPress);
@@ -97,7 +99,7 @@ function cityListCreate(value) {
         cityList: value
     };
     var cityHtml = cityRender(tempVal);
-    console.log(cityHtml);
+    //console.log(cityHtml);
     cityList.innerHTML += cityHtml;
 
     console.log(value);
@@ -110,14 +112,12 @@ function cityListCreate(value) {
     iconRadomizer();
 }
 
-
-
 function iconRadomizer() {
     console.log('Твои города:');
     var allCitys = document.querySelectorAll('.cityIco')
 
     allCitys.forEach(function(item, i, arr) {
-        let right = 70 * Math.floor(getRandomArbitary(0, -7));
+        let right = 71 * Math.floor(getRandomArbitary(0, -7));
         let top = 65 * Math.floor(getRandomArbitary(0, -5));
         item.style.backgroundPosition = `${right}px ${top}px`;
     });
@@ -162,10 +162,29 @@ document.body.addEventListener('click', function () {
     resCountWrap.textContent = null;
 }) // закрываем подсказки по клику на пустоте
 
+document.body.addEventListener('click', function (e) {
+    if (e.target.tagName === 'LI') {
+        console.log('повезло, вы кликнули конкретно на пункт');
+        block = e.target;
+        textField.value = block.dataset.name;
+        findOnPress();
+    }
+    else  if (e.target.parentNode.tagName === 'LI') {
+        console.log('не сам Ли, но всеравно');
+        block = e.target.parentNode;
+        textField.value = block.dataset.name;
+        findOnPress();
+    }
+
+
+    //textField.addEventListener('keyup', findOnPress);
+
+}, false)
+
 function findPartial( arr, ell ) {
     var content = document.body.querySelector('.content');
     let tepmArr = [];
-    let finArr = [];
+    let finArr;
 
     var regex = new RegExp(ell, 'i');
     var resCount = 0;
@@ -187,7 +206,7 @@ function findPartial( arr, ell ) {
         }
     }
     var tempVal = {
-        cityList: tepmArr
+        cityItemList: tepmArr
     };
     finArr = cityItemRender(tempVal);
     content.innerHTML += finArr;
@@ -199,10 +218,7 @@ function findPartial( arr, ell ) {
 function findOnPress() {
     textField.setAttribute('class', 'form-control city-input');
     console.log("отпустили клавишу");
-    //console.log(newCityList);
     findPartial( newCityList, textField.value);
-    //console.log(textField.value);
-    //console.log(newCityList);
 }
 
 function pageLoader() {
@@ -237,6 +253,3 @@ loadTowns() // после отправки запроса
         }
     )
 
-
-
-console.log(textField);

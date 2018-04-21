@@ -32,14 +32,19 @@ p.done:after {
     z-index: 10;
     color: #888;    position: relative; }
 
-.cityList .input-group .hintsWrap {    max-width: 500px;  width: 100%;    position: absolute;
-    /*display: none;*/
-    background-color: #fff;
+.cityList .input-group .textFieldClear {  width: 100px;
+    position: relative;
+    display: inline-block;
     border: 1px solid #ccc;
     border-radius: 2px;
-    border-top: none;
-    top: 35px;
-    z-index: 1;}
+    height: 38px;
+    z-index: 1;
+    left: -90px;
+    text-align: center;
+    padding: 5px 0;
+    cursor: pointer;}
+
+.cityList .input-group .textFieldClear:hover {background-color: #ddd;}
 
 .cityList .input-group .hintsWrap .hint{     padding: 3px 0 4px 25px;  cursor: pointer; position: relative;   }
 .cityList .input-group .hintsWrap .hint:hover {background-color: #8cbdff  }
@@ -54,8 +59,8 @@ p.done:after {
 }
 
 
-.cityList .input-group .form-control.city-input.closed ~ .hintsWrap {display:none;}
-.cityList .input-group .form-control.city-input:active ~ .hintsWrap {background-color: #ccc;}
+.cityList .input-group .form-control.city-input.closed ~ .textFieldClear {display:none;}
+.cityList .input-group .form-control.city-input:active ~ .textFieldClear {background-color: #ccc;}
 
 
 .content {
@@ -92,9 +97,9 @@ p.done:after {
     width: 25px;
     height: 25px;
     text-align: center;
+    background-color: #fff;
 }
 .content li:hover::before {
-    background-color: #fff;
 
 }
 .content li .cityIco {

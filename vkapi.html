@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AJAX City Filter with Handlebars</title>
+    <title>VK API</title>
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -19,12 +19,11 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-            <h1>AJAX City Filter, using handlebars</h1>
-                <p>ДЗ 1: переделать предыдущее ДЗ с загрузкой списка городов по AJAX.<br>
-                    После загрузки страницы, происходит загрузка городов через AJAX.<br>
-                    Города сортируются по имени и выводятся на странице при помощи шаблонизатора Handlebars.<br>
-                    При вводе значений в текстовое поле, должны скрываться те города, в названии которых нет подстроки, указанной в текстовом поле.</p>
-                <a href="vkapi.html">Посмотреть второе задание про VK-API</a>
+            <h1>VK API</h1>
+                <p>ДЗ2: Создать приложение для ВКонтакте, которое загружает список ваших друзей и выводит их на страницу в следующем формате: Фото, ФИО, Возраст, Дата рождения.<br>
+                    Друзья должны быть отсортированы по дате рождения в порядке убывания. То есть на самом верху списка расположен друг с ближайший датой рождения.<br>
+                    Использование шаблонизатора приветствуется.</p>
+
             </div>
 
             <div class="col-12 cityList">
@@ -69,7 +68,6 @@
     {{/each}}
 </script>
 
-<script src="my.js"></script>
 
 </body>
 </html>
