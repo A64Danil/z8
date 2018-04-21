@@ -120,6 +120,9 @@ p.done:after {
 }
 
 
+.content.friends a {text-decoration: none;}
+.content.friends li {background-size: contain;}
+
 .some {
     background-position: -70px 0px;
     background-position: -70px 0px;

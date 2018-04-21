@@ -20,15 +20,15 @@
         <div class="row">
             <div class="col-12">
             <h1>VK API</h1>
-                <p>ДЗ2: Создать приложение для ВКонтакте, которое загружает список ваших друзей и выводит их на страницу в следующем формате: Фото, ФИО, Возраст, Дата рождения.<br>
+                <p>ДЗ 2: Создать приложение для ВКонтакте, которое загружает список ваших друзей и выводит их на страницу в следующем формате: Фото, ФИО, Возраст, Дата рождения.<br>
                     Друзья должны быть отсортированы по дате рождения в порядке убывания. То есть на самом верху списка расположен друг с ближайший датой рождения.<br>
                     Использование шаблонизатора приветствуется.</p>
 
             </div>
 
-            <div class="col-12 cityList">
-
-
+            <div class="col-12 friendList">
+                <ol class="content friends">
+                </ol>
             </div>
 
             <div class="col-12">
@@ -47,27 +47,19 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
 
-<script id="city-tpl" type="text/x-handlebars-template">
-    <h3>Список городов:</h3>
-    <ol class="content">
-        {{#each cityList}}
-            <li data-name="{{name}}">
-                <div class="singleCity">{{name}}</div>
-                <div class="cityIco"></div>
+<script src="https://vk.com/js/api/openapi.js"  type="text/javascript"></script>
+
+<script id="friendsTpl" type="text/x-handlebars-template">
+        {{#each items}}
+        <a href="https://vk.com/id{{id}}">
+            <li style="background-image: url({{photo_200}});">
+                    <div class="singleFriend">{{first_name}}</div>
             </li>
+        </a>
         {{/each}}
-    </ol>
 </script>
 
-<script id="cityItem-tpl" type="text/x-handlebars-template">
-    {{#each cityItemList}}
-        <li data-name="{{name}}">
-            <div class="singleCity">{{name}}</div>
-            <div class="cityIco"></div>
-        </li>
-    {{/each}}
-</script>
-
+<script src="vk.js"></script>
 
 </body>
 </html>
