@@ -26,6 +26,21 @@ p.done:after {
 
 .loader-wrap .img-fluid {max-width: 100px;}
 
+.cityList {margin: 15px 0;}
+.cityList .error_msg {    font-size: 18px;
+    margin: 4px 0;
+    color: #f00;
+    font-weight: bold;}
+
+.cityList .try_msg {    font-size: 18px;
+    margin: 4px 0;
+    font-weight: bold;}
+
+.cityList .try_msg .newUrl {color:#b1b1b1; font-size: 16px; font-weight: normal;}
+
+.cityList .listOfLoads {display: block;    margin: 0 0 8px;}
+
+.cityList  button + label {display: block;    margin-top: 20px;}
 .cityList .input-group {margin-bottom: 20px; display: block}
 .cityList .input-group .form-control.city-input { max-width: 500px;  width: 100%;display: inline-block; padding-left: 25px;}
 .cityList .input-group .count-results {display: inline-block;left: -110px;
@@ -119,6 +134,8 @@ p.done:after {
     color: #9022d2;
 }
 
+
+.content li > .singleCity {text-align: center; line-height: 20px;}
 
 .content.friends a {text-decoration: none;}
 .content.friends li {background-size: contain; border: 3px solid #ccc;     margin: 0 5px 10px auto}
