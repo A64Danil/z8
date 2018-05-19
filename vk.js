@@ -2,6 +2,7 @@
  * Created by Danil on 19.04.2018.
  */
 console.log("NODE JS are working. Тест русских символов");
+__QL_simpleLoad = false;
 
 var friendList = document.body.querySelector('.friendList');
 var content = document.body.querySelector('.content');
@@ -53,6 +54,7 @@ function callAPI(method, params, version) {
     console.log('перед ме');
     console.log(me);
     console.log('после ме');
+    removeLoader();
 })();
 
 
@@ -128,61 +130,27 @@ function seasonColor() {
 //         console.log(data);
 //     });
 
-function cityListCreate(value) {
-    console.log('Список формируется');
-    var tempVal = {
-        cityList: value
-    };
-    var cityHtml = cityRender(tempVal);
-    //console.log(cityHtml);
-    cityList.innerHTML += cityHtml;
 
-    console.log(value);
-    for (let i = 0; i < value.length; i++) {
-        newCityList[i] = value[i].name;
-    }
-    console.log(newCityList);
-    console.log('Список готов');
-
-    iconRadomizer();
-}
-
-function iconRadomizer() {
-    console.log('Твои города:');
-    var allCitys = document.querySelectorAll('.cityIco')
-
-    allCitys.forEach(function(item, i, arr) {
-        let right = 71 * Math.floor(getRandomArbitary(0, -7));
-        let top = 65 * Math.floor(getRandomArbitary(0, -5));
-        item.style.backgroundPosition = `${right}px ${top}px`;
-    });
-    //console.log(allCitys);
-}
-
-function getRandomArbitary(min, max) {
-    return Math.random() * (max - min) + min;
-}
-
-
-function pageLoader() {
-    return new Promise ((resolve) => {
-        var loadWrap =  document.body.querySelector('.loader-wrap');
-        window.addEventListener('load', function () {
-           document.body.removeChild(loadWrap);
-           loadText = null;
-           loadWrap = null;
-           resolve();
-       });
-    });
-}
-
-pageLoader()
-    .then(
-        (value) => {
-            console.log('Успех');
-        },
-        (value) => {
-            console.log('Что-то пошло не так, код ошибки: ' + value);
-        }
-    )
+//
+// function pageLoader() {
+//     return new Promise ((resolve) => {
+//         var loadWrap =  document.body.querySelector('.loader-wrap');
+//         window.addEventListener('load', function () {
+//            document.body.removeChild(loadWrap);
+//            loadText = null;
+//            loadWrap = null;
+//            resolve();
+//        });
+//     });
+// }
+//
+// pageLoader()
+//     .then(
+//         (value) => {
+//             console.log('Успех');
+//         },
+//         (value) => {
+//             console.log('Что-то пошло не так, код ошибки: ' + value);
+//         }
+//     )
 
